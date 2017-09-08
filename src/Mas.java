@@ -1,4 +1,3 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class Mas {
@@ -11,7 +10,7 @@ public class Mas {
         for (int i = 0; i < arr.length; i++)
             arr[i] = (int) ( Math.random() * n);
         for (int i: arr)
-            System.out.print(i);
+            System.out.print(i + " ");
         System.out.println(" ");
 
         int min = arr[0];
