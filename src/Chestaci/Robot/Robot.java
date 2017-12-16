@@ -2,16 +2,17 @@ package Chestaci.Robot;
 
 import Chestaci.TwoQueue.TwoQueue;
 
-//import java.util.ArrayList;
+import java.util.ArrayList;
+
 
 public class Robot {
 
     private double x = 0;
     private double y = 0;
     protected double course = 0;
- //   private ArrayList<RobotLine> lines = new ArrayList<RobotLine>();
+    private ArrayList<RobotLine> lines = new ArrayList<RobotLine>();
 
-    private TwoQueue qqq = new TwoQueue();
+ //   private TwoQueue qqq = new TwoQueue();
 
 
     private Operator operator;
@@ -48,9 +49,15 @@ public class Robot {
         this.course = course;
     }
 
+    private RobotListener listener;
+
     public Robot(double x, double y) {
         this.x = x;
         this.y = y;
+    }
+
+    public void setListener(RobotListener listener) {
+        this.listener = listener;
     }
 
     public Operator getOperator() {
@@ -62,28 +69,36 @@ public class Robot {
     }
 
     public void forward(int distance) {
+        // Вызываем слушателя (если он установлен) в начале
+        if(listener !=null) {
+            listener.startMove(x, y);
+        }
         // Запоминаем координаты робота перед перемещением
         final double xOld = x;
         final double yOld = y;
         // Меняем координаты
         x += distance * Math.cos(course / 180 * Math.PI);
         y += distance * Math.sin(course / 180 * Math.PI);
+        // Вызываем слушателя (если он установлен) после остановки
+        if(listener !=null) {
+            listener.endMove(x, y);
+        }
         // Запоминаем координаты пройденного пути в списке
         // Класс List позволяет добавить объект и хранить его
-    //    lines.add(new RobotLine(xOld, yOld, x, y));// для ArrayList
+        lines.add(new RobotLine(xOld, yOld, x, y));// для ArrayList
 
-        qqq.push(new RobotLine(xOld, yOld, x, y));
-
-    }
-
-    public TwoQueue getQQQ() {
-        return qqq;
-
+  //      qqq.push(new RobotLine(xOld, yOld, x, y));
 
     }
 
-//        public ArrayList<RobotLine> getLines() {
-//            return lines;
-//        }
+//    public TwoQueue getQQQ() {
+//        return qqq;
+//
+//
+ //   }
+
+        public ArrayList<RobotLine> getLines() {
+            return lines;
+        }
 
 }

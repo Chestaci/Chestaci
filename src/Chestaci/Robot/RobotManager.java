@@ -39,7 +39,7 @@ public class RobotManager {
         // Количество сторон многоугольника
 
 
-///*
+//ЗВЁЗДОЧКА
 //        final double COUNT = 5;
 //        // Длина стороны
 //        final int SIDE = 100;
@@ -52,11 +52,12 @@ public class RobotManager {
 //            robot.setCourse(robot.getCourse() + (360 / (COUNT / 2))); // 5-конечная звезда
 //            robot.printCoordinates();
 //        }
-//*/
-//
-///*
-////        final double COUNT = 42;
-//        // Длина стороны
+
+
+
+// ТОЖЕ СПИРАЛЬКА
+//        final double COUNT = 42;
+//       // Длина стороны
 //
 //
 //        final int SIDE = 450;
@@ -72,24 +73,43 @@ public class RobotManager {
 //            robot.setCourse(robot.getCourse() + 90);
 //            chislo -= 30;
 //        }
-//*/
 
 
-        final int SIDE = 450;
-        final int STEP = 30;
+//СПИРАЛЬКА
+//        final int SIDE = 450;
+//        final int STEP = 30;
+//
+//        int chislo = SIDE;
+//
+//        Robot robot = new Robot(0, 0);
+//
+//       while (chislo > 0) {
+//            robot.forward(chislo);
+//            robot.setCourse(robot.getCourse() + 90);
+//            robot.forward(chislo);
+//            robot.setCourse(robot.getCourse() + 90);
+//            chislo -= STEP;
+//        }
 
-        int chislo = SIDE;
 
-        Robot robot = new Robot(0, 0);
 
-       while (chislo > 0) {
-            robot.forward(chislo);
-            robot.setCourse(robot.getCourse() + 90);
-            robot.forward(chislo);
-            robot.setCourse(robot.getCourse() + 90);
-            chislo -= STEP;
+
+//
+        //Квадратище
+        // Количество сторон многоугольника
+        final int COUNT = 4;
+        // Длина стороны
+        final int SIDE = 100;
+
+        Robot robot = new Robot(200, 50);
+        // Установка слушателя для робота
+        RobotListener srl = new SimpleRobotListener();
+        robot.setListener(srl);
+        // Создаем замкнутую фигуру с количеством углов COUNT
+        for (int i = 0; i < COUNT; i++) {
+            robot.forward(SIDE);
+            robot.setCourse(robot.getCourse() + 360 / COUNT);
         }
-
 
 
        // Создаем форму для отрисовки пути нашего робота
