@@ -1,4 +1,4 @@
-package Chestaci.Array.KonskiyMassive;
+package Chestaci.Array.KonskiyMassive.KM1;
 
 public class HorseField {
     private int size;
@@ -18,16 +18,6 @@ public class HorseField {
 
     public HorseField(int size) {
         this.size = size;
-        arr = new int[getSize()][getSize()];
+        arr = new int[size][size];
     }
-
-//    public void printArr() {
-//        for (int[] q: arr) {
-//            for (int q1 : q) {
-//                System.out.format("%4d", q1);
-//            }
-//            System.out.println();
-//        }
-//
-//    }
 }
