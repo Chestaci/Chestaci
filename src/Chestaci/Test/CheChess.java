@@ -1,4 +1,4 @@
-package Chestaci;
+package Chestaci.Test;
 
 public class CheChess {
     public static void main(String[] args) {

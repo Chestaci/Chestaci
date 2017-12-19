@@ -1,4 +1,4 @@
-package Chestaci;
+package Chestaci.Test;
 
 public class CheRhombus {
     public static void main(String[] args) {
