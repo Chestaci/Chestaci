@@ -6,8 +6,7 @@ public class ObjectQueue {
     // Указатель на последний элемент
     private ObjectBox tail = null;
     // Поле для хранения размера очереди
-  private int size = 0;
-
+    private int size = 0;
 
     public void push(Object obj) {
         // Сразу создаем вспомогательный объект и помещаем новый элемент в него
@@ -48,9 +47,10 @@ public class ObjectQueue {
         // Возвращаем значение
         return obj;
     }
+
     public Object get(int index) {
         // Если нет элементов или индекс больше размера или индекс меньше 0
-        if(size == 0 || index >= size || index < 0) {
+        if (size == 0||index >= size||index < 0) {
             return null;
         }
         // Устанавлваем указатель, который будем перемещать на "голову"
@@ -58,7 +58,7 @@ public class ObjectQueue {
         // В этом случае позиция равну 0
         int pos = 0;
         // Пока позиция не достигла нужного индекса
-        while(pos < index) {
+        while (pos < index) {
             // Перемещаемся на следующий элемент
             current = current.getNext();            // И увеличиваем позицию
             pos++;

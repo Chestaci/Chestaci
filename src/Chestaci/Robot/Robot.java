@@ -1,5 +1,6 @@
 package Chestaci.Robot;
 
+import Chestaci.TeaProject.ObjectQueue;
 import Chestaci.TwoQueue.TwoQueue;
 
 import java.util.ArrayList;
@@ -12,8 +13,8 @@ public class Robot {
     protected double course = 0;
     private ArrayList<RobotLine> lines = new ArrayList<RobotLine>();
 
- //   private TwoQueue qqq = new TwoQueue();
-
+    //   private TwoQueue qqq = new TwoQueue();
+    private ObjectQueue<RobotLine> oqLines = new ObjectQueue<>();
 
     private Operator operator;
 
@@ -70,7 +71,7 @@ public class Robot {
 
     public void forward(int distance) {
         // Вызываем слушателя (если он установлен) в начале
-        if(listener !=null) {
+        if (listener != null) {
             listener.startMove(x, y);
         }
         // Запоминаем координаты робота перед перемещением
@@ -80,14 +81,15 @@ public class Robot {
         x += distance * Math.cos(course / 180 * Math.PI);
         y += distance * Math.sin(course / 180 * Math.PI);
         // Вызываем слушателя (если он установлен) после остановки
-        if(listener !=null) {
+        if (listener != null) {
             listener.endMove(x, y);
         }
         // Запоминаем координаты пройденного пути в списке
         // Класс List позволяет добавить объект и хранить его
         lines.add(new RobotLine(xOld, yOld, x, y));// для ArrayList
+        oqLines.push(new RobotLine(xOld, yOld, x, y)); // для очереди
 
-  //      qqq.push(new RobotLine(xOld, yOld, x, y));
+        //      qqq.push(new RobotLine(xOld, yOld, x, y));
 
     }
 
@@ -95,10 +97,13 @@ public class Robot {
 //        return qqq;
 //
 //
- //   }
+    //   }
 
-        public ArrayList<RobotLine> getLines() {
-            return lines;
-        }
+    public ArrayList<RobotLine> getLines() {
+        return lines;
+    }
 
+    public ObjectQueue<RobotLine> getOqLines() {
+        return oqLines;
+    }
 }

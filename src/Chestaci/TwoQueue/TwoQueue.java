@@ -34,6 +34,7 @@ public class TwoQueue {
         obj.setObject(object);
         if (head == null){
             head = obj;
+            tail = obj;
         }else {
             tail.setNext(obj);
         }
