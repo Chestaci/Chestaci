@@ -5,7 +5,7 @@ import FIFO.ObjectQueue;
 
 import javax.swing.*;
 
-public class RobotManager {
+public class RobotManager{
     public static void main(String[] args) {
 
 //        RobotExt robot = new RobotExt(0,0, 0);
@@ -95,8 +95,8 @@ public class RobotManager {
 
 
 //
-        //Квадратище
-        // Количество сторон многоугольника
+//        //Квадратище
+//        // Количество сторон многоугольника
         final int COUNT = 4;
         // Длина стороны
         final int SIDE = 100;

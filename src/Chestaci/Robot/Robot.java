@@ -4,7 +4,7 @@ import Chestaci.TeaProject.ObjectQueue;
 import Chestaci.TwoQueue.TwoQueue;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 public class Robot {
 
@@ -14,7 +14,7 @@ public class Robot {
     private ArrayList<RobotLine> lines = new ArrayList<RobotLine>();
 
     //   private TwoQueue qqq = new TwoQueue();
-    private ObjectQueue<RobotLine> oqLines = new ObjectQueue<>();
+    private ObjectQueue<RobotLine> oqLines = new ObjectQueue<RobotLine>();
 
     private Operator operator;
 
