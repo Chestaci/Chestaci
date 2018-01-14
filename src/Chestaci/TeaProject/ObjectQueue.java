@@ -30,6 +30,32 @@ public class ObjectQueue<T> {
         size++;
     }
 
+    public void push(T obj, int priority) {
+        ObjectBox<T> ob = new ObjectBox<>();
+        ob.setObject(obj);
+        ob.setPriority(priority);
+        if (head == null) {
+            head = ob;
+            tail = ob;
+        } else {
+            if(tail.getPriority() > ob.getPriority()){
+                tail.setNext(ob);
+                ob.setPrev(tail);
+                tail = ob;
+            }else {
+                ObjectBox<T> cur = head;
+                while (ob.getPriority() >= cur.getPriority()) {
+
+                }
+            }
+        }
+        // И в любом случае нам надо наш "хвост" переместить на новый элемент
+        // Если это первый элемент, то "голова" и "хвост" будут указывать на один и тот же элемент
+        tail = ob;
+        // Увеличиваем размер нашей очереди
+        size++;
+    }
+
     public T pull() {
         // Если у нас нет элементов, то возвращаем null
         if (size == 0) {
@@ -90,10 +116,19 @@ public class ObjectQueue<T> {
     private class ObjectBox<T> {
         // Поле для хранения объекта
         private T object;
+        private int priority;
         // Поле для указания на следующий элемент в цепочке.
         // Если оно равно NULL - значит это последний элемент
         private ObjectBox<T> next;
         private ObjectBox<T> prev;
+
+        public int getPriority() {
+            return priority;
+        }
+
+        public void setPriority(int priority) {
+            this.priority = priority;
+        }
 
         public T getObject() {
             return object;
