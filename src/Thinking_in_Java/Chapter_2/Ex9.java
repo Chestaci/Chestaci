@@ -1,6 +1,10 @@
 package Thinking_in_Java.Chapter_2;
 
 public class Ex9 {
+    public static void main(String[] args) {
+        Ex9 e = new Ex9();
+        e.print();
+    }
     Integer i = 1;
     Double d = 2.222;
     Character c = 'x';
@@ -20,8 +24,5 @@ public class Ex9 {
         System.out.println(b);
     }
 
-    public static void main(String[] args) {
-        Ex9 e = new Ex9();
-        e.print();
-    }
+
 }
