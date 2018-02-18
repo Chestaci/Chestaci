@@ -6,7 +6,7 @@ public class Ex10 {
         int b = ((v - (a * 1000)) / 100);
         int c = ((v - (a * 1000) - (b * 100)) / 10);
         int d = (v - (a * 1000) - (b * 100) - (c * 10));
-        //System.out.println(a + " " + b + " " + c + " " + d);
+
         calc(a, b, c, d, v);
         calc(a, b, d, c, v);
         calc(b, a, c, d, v);
@@ -76,4 +76,3 @@ public class Ex10 {
 //6880 = 86 * 80
 //6880 = 80 * 86
 }
-
