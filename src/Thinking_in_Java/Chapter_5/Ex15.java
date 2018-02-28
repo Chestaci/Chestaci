@@ -2,6 +2,7 @@ package Thinking_in_Java.Chapter_5;
 
 public class Ex15 {
     public static void main(String[] args) {
+        System.out.println("main");
         ExTest exTest2 = new ExTest();
         exTest2.print();
     }
