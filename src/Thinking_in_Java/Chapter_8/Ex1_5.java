@@ -2,7 +2,7 @@ package Thinking_in_Java.Chapter_8;
 
 public class Ex1_5 {
     public static void ride(Cycle cycle){
-        System.out.println("GOOO! RIDE!!!!");
+        System.out.println("GOOO!!! RIDE!!!");
         System.out.println(cycle.wheels());
     }
 
