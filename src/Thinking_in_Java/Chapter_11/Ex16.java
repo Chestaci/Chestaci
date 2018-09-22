@@ -36,7 +36,7 @@ public class Ex16 {
         }
         System.out.println("count = "+ count);
 
-
+        System.out.println("Чай Чай Чай Чай Чай Чай");
     }
 }
 
