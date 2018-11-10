@@ -1,0 +1,44 @@
+package Thinking_in_Java.Chapter_12;
+
+public class Ex5 {
+
+    public static void main(String[] args) {
+        int i = 0;
+        int j = 0;
+        while (true) {
+            try {
+                if (i > 3) {
+                    j = 2;
+                }
+                int z = (100 / j);
+                    System.out.println(z);
+                    break;
+            }catch (Exception e){
+                e.printStackTrace();
+                i++;
+            }finally {
+                System.out.println("Программа смогла работать?");
+            }
+        }
+    }
+
+//private static int[] ia = new int[2];
+//    static int x = 5;
+//    public static void main(String[] args) {
+//        while(true) {
+//            try {
+//                ia[x] = 1;
+//                System.out.println(ia[x]);
+//                break;
+//            } catch(ArrayIndexOutOfBoundsException e) {
+//                System.err.println(
+//                        "Caught ArrayIndexOutOfBoundsException");
+//                e.printStackTrace();
+//                x--;
+//            } finally {
+//                System.out.println("Are we done yet?");
+//            }
+//        }
+//        System.out.println("Now, we're done.");
+//    }
+}
