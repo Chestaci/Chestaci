@@ -5,7 +5,7 @@ import Thinking_in_Java.Chapter_14.Ex11.typeinfo.pets.Cat;
 import static Thinking_in_Java.Chapter_15.Tuple.tuple;
 import static Thinking_in_Java.Chapter_15.Tuple2.tuple2;
 
-public class Ex16_17 {
+public class Ex15_16 {
 }
 
 class Tuple {
@@ -29,6 +29,12 @@ class Tuple {
 }
 
 class TupleTest2 {
+
+    ///////////////
+    static TwoTuple<String,Integer> fff = f2();
+
+    ///////////////
+
     static TwoTuple<String,Integer> f() {
         return tuple("hi", 47);
     }
@@ -67,18 +73,19 @@ class TupleTest2 {
 
 
         /////////////////
-        TwoTuple twoTuple = new TwoTuple("",1);
-        twoTuple = f();
-        twoTuple = f2();
-        TwoTuple twoTuple2 = new TwoTuple(1,1);
-        twoTuple2 = f();
-        twoTuple2 = f2();
-        TwoTuple<String,String> twoTuple3 = new TwoTuple("","");
-        //twoTuple3 = f();
-        twoTuple3 = f2();
-        TwoTuple<Cat,String> twoTuple4 = new TwoTuple("","");
-        //twoTuple4 = f();
-        twoTuple4 = f2();
+//        TwoTuple twoTuple = new TwoTuple("",1);
+//        twoTuple = f();
+//        twoTuple = f2();
+//        TwoTuple twoTuple2 = new TwoTuple(1,1);
+//        twoTuple2 = f();
+//        twoTuple2 = f2();
+//        TwoTuple<String,String> twoTuple3 = new TwoTuple<String,String>("","");
+//        //twoTuple3 = f();
+//        twoTuple3 = f2();
+//        System.out.println(twoTuple3.first.getClass() + "" + twoTuple3.second.getClass());
+//        TwoTuple<Cat,String> twoTuple4 = new TwoTuple<Cat,String>(new Cat("Murzic"),"");
+////        twoTuple4 = f();
+//        twoTuple4 = f2();
 
         /////////////////
 // Какая-то лажа.. надо разбираться... почему работает? версия поменялась?
