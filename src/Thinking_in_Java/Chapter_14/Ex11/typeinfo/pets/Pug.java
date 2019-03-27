@@ -13,4 +13,12 @@ public class Pug extends Dog {
             return new Pug();
         }
     }
+//    public void speak(){
+//        System.out.println(this + "is speak");
+//    }
+
+    @Override
+    public String toString() {
+        return "Pug{" + "name='" + name + '\'' + '}';
+    }
 }

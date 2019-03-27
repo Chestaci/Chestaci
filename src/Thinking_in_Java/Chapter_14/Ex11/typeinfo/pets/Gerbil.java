@@ -7,4 +7,12 @@ public class Gerbil extends Rodent { // Ex11
     public Gerbil() {
         super();
     }
+//    public void speak(){
+//        System.out.println(this + "is speak");
+//    }
+
+    @Override
+    public String toString() {
+        return "Gerbil{" + "name='" + name + '\'' + '}';
+    }
 }

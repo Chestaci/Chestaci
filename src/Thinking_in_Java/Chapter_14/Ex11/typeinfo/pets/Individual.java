@@ -8,6 +8,10 @@ public class Individual {
         this.name = name;
     }
 
+    public void speak(){
+        System.out.println(this + "is speak");
+    }
+
     @Override
     public String toString() {
         return "Individual{" + "name='" + name + '\'' + '}';

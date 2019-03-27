@@ -13,4 +13,12 @@ public class Manx extends Cat {
             return new Manx();
         }
     }
+//    public void speak(){
+//        System.out.println(this + "is speak");
+//    }
+
+    @Override
+    public String toString() {
+        return "Manx{" + "name='" + name + '\'' + '}';
+    }
 }

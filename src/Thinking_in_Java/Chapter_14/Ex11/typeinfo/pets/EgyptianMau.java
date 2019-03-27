@@ -13,4 +13,12 @@ public class EgyptianMau extends Cat{
             return new EgyptianMau();
         }
     }
+//    public void speak(){
+//        System.out.println(this + "is speak");
+//    }
+
+    @Override
+    public String toString() {
+        return "EgyptianMau{" + "name='" + name + '\'' + '}';
+    }
 }

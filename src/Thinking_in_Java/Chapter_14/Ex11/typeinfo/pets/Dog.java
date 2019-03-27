@@ -7,4 +7,12 @@ public class Dog extends Pet {
     public Dog() {
         super();
     }
+//    public void speak(){
+//        System.out.println(this + "is speak");
+//    }
+
+    @Override
+    public String toString() {
+        return "Dog{" + "name='" + name + '\'' + '}';
+    }
 }

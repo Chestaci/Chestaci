@@ -13,4 +13,12 @@ public class Hamster extends Rodent {
             return new Hamster();
         }
     }
+//    public void speak(){
+//        System.out.println(this + "is speak");
+//    }
+
+    @Override
+    public String toString() {
+        return "Hamster{" + "name='" + name + '\'' + '}';
+    }
 }

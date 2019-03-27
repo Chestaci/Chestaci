@@ -13,4 +13,12 @@ public class Mutt extends Dog {
             return new Mutt();
         }
     }
+//    public void speak(){
+//        System.out.println(this + "is speak");
+//    }
+
+    @Override
+    public String toString() {
+        return "Mutt{" + "name='" + name + '\'' + '}';
+    }
 }

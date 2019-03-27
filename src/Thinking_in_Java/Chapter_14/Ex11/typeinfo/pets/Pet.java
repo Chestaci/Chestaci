@@ -8,6 +8,10 @@ public class Pet extends Individual{
         super();
     }
 
+//    public void speak(){
+//        System.out.println(this + "is speak");
+//    }
+
     @Override
     public String toString() {
         return "Pet{" + "name='" + name + '\'' + '}';

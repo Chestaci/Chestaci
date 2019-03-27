@@ -13,4 +13,12 @@ public class Rat extends Rodent {
             return new Rat();
         }
     }
+//    public void speak(){
+//        System.out.println(this + "is speak");
+//    }
+
+    @Override
+    public String toString() {
+        return "Rat{" + "name='" + name + '\'' + '}';
+    }
 }
