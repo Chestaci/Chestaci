@@ -17,8 +17,13 @@ public class Ex1 {
     }
 }
 
-class BerylliumSphere {
+class BerylliumSphere implements Comparable<BerylliumSphere>{
     private static long counter;
     private final long id = counter++;
     public String toString() { return "Sphere " + id; }
+
+    @Override
+    public int compareTo(BerylliumSphere berylliumSphere) {
+        return Long.compare(id, berylliumSphere.id);
+    }
 }
