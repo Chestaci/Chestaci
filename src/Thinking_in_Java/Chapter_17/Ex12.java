@@ -14,9 +14,18 @@ class AssociativeArray<K,V> {
         pairs = new Object[length][2];
     }
     public void put(K key, V value) {
-        if(index >= pairs.length)
+        for(int i = 0; i < index; i++){
+            if(key.equals(pairs[i][0])) {
+                pairs[i] = new Object[]{ key, value };
+                return;
+            }
+        }
+        if(index >= pairs.length){
             throw new ArrayIndexOutOfBoundsException();
+        }
+
         pairs[index++] = new Object[]{ key, value };
+
     }
     @SuppressWarnings("unchecked")
     public V get(K key) {
