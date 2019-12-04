@@ -1,74 +1,67 @@
 package Thinking_in_Java.Chapter_17;
 
-import net.mindview.util.TextFile;
-
 import java.util.*;
 
-public class Ex15 {
-    public static void main(String[] args) {
-
-        List<String> words = new TextFile("src/Thinking_in_Java/Chapter_17/Ex15.java", "\\W+");
-
-        SlowMap<String, Integer> sm = new SlowMap<>();
-
-        for(String word : words) {
-            Integer freq = sm.get(word);
-            sm.put(word, freq == null ? 1 : freq + 1);
-        }
-        System.out.println(sm);
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-    }
+public class Ex36 {
 }
+class SlowMap3<K,V> extends AbstractMap<K,V> {
 
-class SlowMap<K,V> extends AbstractMap<K,V> {
-    private List<K> keys = new ArrayList<K>();
-    private List<V> values = new ArrayList<V>();
-    public V put(K key, V value) {
-        V oldValue = get(key); // The old value or null
-        if(!keys.contains(key)) {
-            keys.add(key);
-            values.add(value);
-        } else
-            values.set(keys.indexOf(key), value);
-        return oldValue;
-    }
-    public V get(Object key) { // key is type Object, not K
-        if(!keys.contains(key))
+    public List<Map.Entry<K,V>> kv = new ArrayList<Map.Entry<K,V>>();
+
+    public Map.Entry<K,V> getEntry(Object key){
+        if(key == null){
             return null;
-        return values.get(keys.indexOf(key));
+        }else {
+            for (Map.Entry<K, V> entry : kv) {
+                if (key.equals(entry.getKey())) {
+                    return entry;
+                }
+            }
+        }
+        return null;
+    }
+
+    public V put(K key, V value) {
+        Map.Entry<K,V> mp = new MapEntry3<K,V>(key, value);
+        Map.Entry<K,V> oldM = getEntry(key);
+        if(oldM != null) {
+            V oldValue = oldM.getValue();
+            oldM.setValue(value);
+            return oldValue;
+        }else {
+            kv.add(mp);
+            return null;
+        }
+    }
+    public V get(Object key) {
+        Map.Entry<K,V> oldM = getEntry(key);
+       if(oldM != null){
+           return oldM.getValue();
+       }
+       return null;
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private EntrySet entries = new EntrySet();
-    public Set<Map.Entry<K,V>> entrySet() { return entries; }
+    public Set<Entry<K,V>> entrySet() { return entries; }
 
     private class EntrySet extends AbstractSet<Map.Entry<K,V>> {
-        public int size() { return keys.size(); }
+        public int size() { return kv.size(); }
         public Iterator<Map.Entry<K,V>> iterator() {
             return new Iterator<Map.Entry<K,V>>() {
                 private int index = -1;
                 public boolean hasNext() {
-                    return index < keys.size() - 1;
+                    return index < kv.size() - 1;
                 }
                 @SuppressWarnings("unchecked")
                 public Map.Entry<K,V> next() {
                     int i = ++index;
                     return new MapEntry(
-                            keys.get(i), values.get(i));
+                            kv.get(i).getKey(), kv.get(i).getValue());
                 }
                 public void remove() {
-                    keys.remove(index);
-                    values.remove(index--);
+                    kv.remove(index--);
                 }
             };
         }
@@ -146,10 +139,10 @@ class SlowMap<K,V> extends AbstractMap<K,V> {
 
 }
 
-class MapEntry<K,V> implements Map.Entry<K,V> {
+class MapEntry3<K,V> implements Map.Entry<K,V> {
     private K key;
     private V value;
-    public MapEntry(K key, V value) {
+    public MapEntry3(K key, V value) {
         this.key = key;
         this.value = value;
     }
@@ -165,8 +158,8 @@ class MapEntry<K,V> implements Map.Entry<K,V> {
                 (value==null ? 0 : value.hashCode());
     }
     public boolean equals(Object o) {
-        if(!(o instanceof MapEntry)) return false;
-        MapEntry me = (MapEntry)o;
+        if(!(o instanceof MapEntry3)) return false;
+        MapEntry3 me = (MapEntry3)o;
         return
                 (key == null ?
                         me.getKey() == null : key.equals(me.getKey())) &&
@@ -176,3 +169,38 @@ class MapEntry<K,V> implements Map.Entry<K,V> {
     public String toString() { return key + "=" + value; }
 }
 
+@SuppressWarnings("unchecked")
+class MapEntryComp<K,V> implements
+        Comparator<Map.Entry<K,V>> {
+    public int compare(Map.Entry<K,V> o1, Map.Entry<K,V> o2) {
+        Comparable<K> c1 = (Comparable<K>)o1.getKey();
+        return c1.compareTo(o2.getKey());
+    }
+}
+
+class SlowMap4<K,V> extends SlowMap3<K,V> {
+    final private MapEntryComp<K, V> comp = new MapEntryComp<K, V>();
+
+    public V put(K key, V value) {
+        Map.Entry<K, V> mp = new MapEntry3<K, V>(key, value);
+        Map.Entry<K, V> oldM = getEntry(key);
+        if (oldM != null) {
+            V oldValue = oldM.getValue();
+            oldM.setValue(value);
+            return oldValue;
+        } else {
+            kv.add(mp);
+            Collections.sort(kv, comp);
+            return null;
+        }
+    }
+    @SuppressWarnings("unchecked")
+    public V get(Object key) {
+        MapEntry3<K,V> mapEntrySearch = new MapEntry3<K,V>((K) key, null);
+        int i = Collections.binarySearch(kv, mapEntrySearch, comp);
+        if (i >= 0) {
+         return kv.get(i).getValue();
+        }
+        return null;
+    }
+}
