@@ -13,6 +13,7 @@ public class Ex21 {
         String s;
         while ((s = bufferedReader.readLine()) != null && s.length() != 0){
             System.out.println(s.toUpperCase());
+
         }
     }
 }
