@@ -1,8 +1,6 @@
 package Thinking_in_Java.Chapter_18;
-
 import java.io.*;
 import java.util.List;
-
 public class Ex14 {
     static String file = "src/Thinking_in_Java/Chapter_18/Ex14.out";
     public static void main(String[] args)

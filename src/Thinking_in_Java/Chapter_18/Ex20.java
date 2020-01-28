@@ -1,11 +1,8 @@
 package Thinking_in_Java.Chapter_18;
-
 import net.mindview.util.BinaryFile;
 import net.mindview.util.Directory;
-
 import java.io.File;
 import java.io.IOException;
-
 public class Ex20 {
     final static byte[] signature =
             {(byte)202, (byte)254, (byte)186, (byte)190};
@@ -26,4 +23,3 @@ public class Ex20 {
         }
     }
 }
-
