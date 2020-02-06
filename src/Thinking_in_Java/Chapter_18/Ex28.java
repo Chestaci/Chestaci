@@ -6,4 +6,3 @@ public class Ex28 {
         Blips.main(args);
     }
 }
-
